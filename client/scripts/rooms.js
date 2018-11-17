@@ -1,8 +1,9 @@
 var Rooms = {
 
   render: function(room) {
-    return `<option value ="${room}"> ${room}</option>`;
+    return `<option value ="${room}">${room}</option>`;
   },
+  
   roomNum: 1,
   
   add: function() {

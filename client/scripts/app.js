@@ -4,7 +4,7 @@ var App = {
 
   username: 'anonymous',
 
-  initialize: function() {
+  initialize: function() { //App.initialize() runs everytime the page reloads b/c the script is nestled in the HTML
     App.username = window.location.search.substr(10);
     FormView.initialize();
     RoomsView.initialize();
@@ -12,7 +12,7 @@ var App = {
 
     // Fetch initial batch of messages
     App.startSpinner();
-    App.fetch(App.stopSpinner);
+    App.fetch(App.stopSpinner); //  
 
   },
 
@@ -27,7 +27,7 @@ var App = {
 
   startSpinner: function() {
     App.$spinner.show();
-    FormView.setStatus(true);
+    FormView.setStatus(true); //what does this do?
   },
 
   stopSpinner: function() {
