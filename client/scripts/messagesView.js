@@ -3,9 +3,12 @@ var MessagesView = {
   $chats: $('#chats'),
 
   initialize: function() {
+    $('.username').on('click', Friends.toggleStatus);
+    $('#send .submit').on('click', Messages.addMessage);
   },
 
-  render: function() {
+  renderMessage: function(message) {
+    $('#chats').prepend(MessageView.render(message));
   }
 
 };
