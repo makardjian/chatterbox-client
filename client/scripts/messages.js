@@ -1,11 +1,16 @@
 var Messages = {
   
-  addMessage: function(userInput) {
-
-    Parse.create($('#message').val(), 
+  addMessage: function() {
+    var messageObj = {
+      username: App.username,
+      text: $('#message').val(),
+      roomname: 'dummy'
+    };
+    
+    Parse.create(messageObj, 
       function() {
-        $('#chats').prepend();
-        $message.val('');
+        $('#chats').prepend(MessagesView.renderMessage(messageObj));
+        $('#message').val('');
       },
       function() {
         alert('No connection to server');

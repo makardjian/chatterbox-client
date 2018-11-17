@@ -3,12 +3,17 @@ var MessagesView = {
   $chats: $('#chats'),
 
   initialize: function() {
+    $('#send').submit(Messages.addMessage);
     $('.username').on('click', Friends.toggleStatus);
-    $('#send .submit').on('click', Messages.addMessage);
+    
   },
 
   renderMessage: function(message) {
-    $('#chats').prepend(MessageView.render(message));
+    MessagesView.$chats.prepend(MessageView.render(message));
+  },
+
+  renderAllMessages: function() {
+    var messageArray = App.fetch()
   }
 
 };

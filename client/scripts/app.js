@@ -18,12 +18,14 @@ var App = {
   },
 
   fetch: function(callback = ()=>{}) {
+    var dataCollection = [];
     Parse.readAll((data) => {
       // examine the response from the server request:
-      console.log(data);
+      dataCollection.push(data);
 
       callback();
     });
+    return dataCollection;
   },
 
   startSpinner: function() {
