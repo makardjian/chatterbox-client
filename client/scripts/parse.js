@@ -5,6 +5,7 @@ var Parse = {
   create: function(message, successCB, errorCB = null) {
     // todo: save a message to the server
     $.ajax({
+      async: false,
       url: Parse.server,
       type: 'POST',
       data: JSON.stringify(message),
@@ -18,6 +19,7 @@ var Parse = {
 
   readAll: function(successCB, errorCB = null) {
     $.ajax({
+      async: false,
       url: Parse.server,
       type: 'GET',
       data: { order: '-createdAt' },
