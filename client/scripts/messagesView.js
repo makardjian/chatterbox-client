@@ -17,7 +17,7 @@ var MessagesView = {
     var messages = App.fetch(); // fetch all the messages in the server and return an object containing all 100 objects
     var messageArray = MessagesView.mapMessages(messages); //returns an array of all the Mesasges stringified into HTML-ready nodes
     MessagesView.currentMessages = messageArray; //sets the currentMessages variable equal to messageArray.
-    MessagesView.$chats.html(messageArray.join('\n')); //adds all 100 messages in the messagesArray to the DOM
+    MessagesView.$chats.html(messageArray.join('')); //adds all 100 messages in the messagesArray to the DOM
     MessagesView.addNewMessages(); //call AddNewMessages
   },
   
@@ -26,10 +26,10 @@ var MessagesView = {
     newMessages = newMessages.filter(el => !MessagesView.currentMessages.includes(el)); //filter the array to equal only the new messages.
     MessagesView.currentMessages = MessagesView.mapMessages(App.fetch()); //re-set currentMessages array to equal the 100 messages in the server.
     
-    MessagesView.renderMessage(newMessages.join('/n')); //grab the newMessages array containing the fresh messages and pass it in as a STRING where each HTML element is separated by a new line.
+    MessagesView.renderMessage(newMessages.join('')); //grab the newMessages array containing the fresh messages and pass it in as a STRING where each HTML element is separated by a new line.
     setTimeout(function() {
       MessagesView.addNewMessages();
-    }, 5000);
+    }, 500);
   },
   
   mapMessages: function(messagesObject) { //mapMessages takes in the messageObject holding 100 messages
@@ -41,9 +41,14 @@ var MessagesView = {
       if (message.text === undefined) {
         message.text = '';
       }
+      if (message.roomname === undefined || message.roomname === null) {
+        message.roomname = 'Room Not Specified';
+      }
       mappedArray.push(MessageView.render(message)); //pushes the HTML-ready strings to our mappedArray
     });
     return mappedArray;
   }
 
 };
+
+

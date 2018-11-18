@@ -1,10 +1,10 @@
 var Messages = {
   
-  addMessage: function() {
+  addMessage: function(event) {
     var messageObj = {
       username: App.username,
       text: $('#message').val(),
-      roomname: 'dummy'
+      roomname: RoomsView.currentRoom
     };
     
     Parse.create(messageObj, 
